@@ -1,10 +1,15 @@
+package br.ufpe.cin;
+
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
-public class Controller {
+public class Main {
+
+	public static String	urlPaginaProfessores	= "http://www2.cin.ufpe.br/site/listaContatos.php?s=1&c=8&p=";
+
 	public static void main(String[] args) throws Exception {
 		String crawlStorageFolder = "/data/crawl/root";
 		int numberOfCrawlers = 7;
@@ -19,17 +24,15 @@ public class Controller {
 		CrawlController controller = new CrawlController(config, pageFetcher,
 				robotstxtServer);
 
-		int max = 6;
+		int numPaginasProfessores = 6;
 		int min = 0;
 
-		for (int i = min; i < max; i++) {
-			controller
-					.addSeed("http://www2.cin.ufpe.br/site/listaContatos.php?s=1&c=8&p="
-							+ i);
+		for (int i = min; i < numPaginasProfessores; i++) {
+			controller.addSeed(urlPaginaProfessores + i);
 		}
 
-		controller.start(MyCrawler.class, numberOfCrawlers);
+		controller.start(CInProfessoresCrawler.class, numberOfCrawlers);
 
-		Main.escreverExcel();
+		Excel.escreverExcel(DescritorProfessores.professores);
 	}
 }

@@ -1,3 +1,5 @@
+package br.ufpe.cin;
+
 
 public class Professor {
 
@@ -10,10 +12,11 @@ public class Professor {
 		private String pagina = "";
 		private String email = "";
 		private String lattes = "";
+		private String sala = "";
 		
 		
 		public Professor(String nome, String urlImagem, String areasInteresse,
-				String fone, String fax, String pagina, String email, String lattes) {
+				String fone, String fax, String pagina, String email, String lattes, String sala) {
 			super();
 			this.setNome(nome);
 			this.urlImagem = urlImagem;
@@ -23,6 +26,7 @@ public class Professor {
 			this.pagina = pagina;
 			this.email = email;
 			this.lattes = lattes;
+			this.setSala(sala);
 		}
 		
 		public String getNome() {
@@ -87,6 +91,14 @@ public class Professor {
 
 		public void setLattes(String lattes) {
 			this.lattes = lattes;
+		}
+
+		public String getSala() {
+			return sala;
+		}
+
+		public void setSala(String sala) {
+			this.sala = sala;
 		}
 
 		

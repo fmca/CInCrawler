@@ -1,11 +1,10 @@
+package br.ufpe.cin;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -15,14 +14,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Excel {
 
 	public static void escreverExcel(List<Professor> professores) {
-		
-		 Collections.sort (professores, new Comparator() {  
-	            public int compare(Object o1, Object o2) {  
-	                Professor p1 = (Professor) o1;  
-	                Professor p2 = (Professor) o2;  
-	                return p1.getNome().compareTo(p2.getNome());  
-	            }  
-	        });  
+
+		Collections.sort(professores, new Comparator<Professor>() {
+			public int compare(Professor p1, Professor p2) {
+				return p1.getNome().compareTo(p2.getNome());
+			}
+		});
 
 		XSSFWorkbook workbook = new XSSFWorkbook();
 
@@ -99,8 +96,7 @@ public class Excel {
 					"professores.xlsx"));
 			workbook.write(out);
 			out.close();
-			System.out
-					.println("Arquivo excel construído com êxito");
+			System.out.println("Arquivo excel construído com êxito");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

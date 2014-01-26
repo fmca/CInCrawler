@@ -1,19 +1,14 @@
-import java.io.IOException;
-import java.util.List;
-import java.util.regex.Pattern;
+package br.ufpe.cin;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Entities.EscapeMode;
-import org.jsoup.select.Elements;
+import java.io.IOException;
+import java.util.regex.Pattern;
 
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
 import edu.uci.ics.crawler4j.url.WebURL;
 
-public class MyCrawler extends WebCrawler {
+public class CInProfessoresCrawler extends WebCrawler {
 
 	private final static Pattern	FILTERS	= Pattern
 													.compile(".*(\\.(css|js|bmp|gif|jpe?g"
@@ -24,10 +19,8 @@ public class MyCrawler extends WebCrawler {
 	@Override
 	public boolean shouldVisit(WebURL url) {
 		String href = url.getURL().toLowerCase();
-		return !FILTERS.matcher(href).matches()
-				&& href.contains("lercontato");
+		return !FILTERS.matcher(href).matches() && href.contains("lercontato");
 	}
-
 
 	@Override
 	public void visit(Page page) {
@@ -35,20 +28,16 @@ public class MyCrawler extends WebCrawler {
 		System.out.println("URL: " + url);
 
 		if (page.getParseData() instanceof HtmlParseData) {
-			
+
 			HtmlParseData htmlParseData = (HtmlParseData) page.getParseData();
-			String text = htmlParseData.getText();
 			String html = htmlParseData.getHtml();
-			
-			
+
 			try {
-				Main.procurarProfessor(html);
+				DescritorProfessores.descreverProfessorDaPagina(html);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-					
-			
+
 		}
 	}
 }

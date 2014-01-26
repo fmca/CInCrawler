@@ -1,3 +1,5 @@
+package br.ufpe.cin;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,15 +10,24 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Entities.EscapeMode;
 import org.jsoup.select.Elements;
 
-public class Main {
+public class DescritorProfessores {
 
 	static List<Professor>	professores	= new ArrayList<Professor>();
 
-	public static void escreverExcel() {
-		Excel.escreverExcel(professores);
+	public static List<Professor> getProfessores() {
+		return professores;
 	}
 
-	public static void procurarProfessor(String html) throws IOException {
+	public static void setProfessores(List<Professor> professores) {
+		DescritorProfessores.professores = professores;
+	}
+
+	public static void addProfessor(Professor professor) {
+		professores.add(professor);
+	}
+
+	public static void descreverProfessorDaPagina(String html)
+			throws IOException {
 
 		Document doc = null;
 
@@ -37,8 +48,6 @@ public class Main {
 			}
 
 			String nomeProfessor = nomeH3.text();
-
-			// System.out.println(conteudoPrincipal.toString());
 			String[] strings = conteudoPrincipal.html().split("<br />");
 
 			String fone = "";
@@ -85,8 +94,9 @@ public class Main {
 				String pagina = conteudo.get(conteudo.size() - 2).text();
 
 				Professor prof = new Professor(nomeProfessor, urlImagem, areas,
-						fone, fax, pagina, email, lattes);
-				professores.add(prof);
+						fone, fax, pagina, email, lattes, sala);
+				
+				addProfessor(prof);
 
 			}
 		} else {
