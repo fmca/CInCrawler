@@ -96,11 +96,11 @@ public class Excel {
 		try {
 			// Write the workbook in file system
 			FileOutputStream out = new FileOutputStream(new File(
-					"howtodoinjava_demo.xlsx"));
+					"professores.xlsx"));
 			workbook.write(out);
 			out.close();
 			System.out
-					.println("howtodoinjava_demo.xlsx written successfully on disk.");
+					.println("Arquivo excel construído com êxito");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
