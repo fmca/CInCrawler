@@ -1,4 +1,4 @@
-package br.ufpe.cin;
+package br.ufpe.cin.entidade;
 
 
 public class Professor {

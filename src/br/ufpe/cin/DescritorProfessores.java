@@ -10,6 +10,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Entities.EscapeMode;
 import org.jsoup.select.Elements;
 
+import br.ufpe.cin.entidade.Professor;
+
 public class DescritorProfessores {
 
 	static List<Professor>	professores	= new ArrayList<Professor>();
@@ -26,6 +28,18 @@ public class DescritorProfessores {
 		professores.add(professor);
 	}
 
+	/**
+	 * Através do conteúdo da página html, busca as informações do professor e
+	 * cria uma entidade {@link br.ufpe.cin.Professor} com os dados encontrados.
+	 * Por fim, o adiciona na lista de professores estática "professores"
+	 * 
+	 * @author Filipe (fmca)
+	 * @param html
+	 *            String com o conteúdo no formato HTML da página de detalhes
+	 *            sobre um professor encontrado pelo Crawler
+	 * @see CInProfessoresCrawler
+	 * 
+	 */
 	public static void descreverProfessorDaPagina(String html)
 			throws IOException {
 
@@ -95,7 +109,7 @@ public class DescritorProfessores {
 
 				Professor prof = new Professor(nomeProfessor, urlImagem, areas,
 						fone, fax, pagina, email, lattes, sala);
-				
+
 				addProfessor(prof);
 
 			}

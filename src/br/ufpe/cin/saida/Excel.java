@@ -1,4 +1,4 @@
-package br.ufpe.cin;
+package br.ufpe.cin.saida;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,9 +11,15 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Excel {
+import br.ufpe.cin.config.Propriedades;
+import br.ufpe.cin.config.Valores;
+import br.ufpe.cin.entidade.Professor;
 
-	public static void escreverExcel(List<Professor> professores) {
+public class Excel implements ISaida {
+
+	public void imprimir(List<Professor> professores) {
+		
+		System.out.println("Imprimindo no Excel");
 
 		Collections.sort(professores, new Comparator<Professor>() {
 			public int compare(Professor p1, Professor p2) {
@@ -91,9 +97,10 @@ public class Excel {
 		}
 
 		try {
-			// Write the workbook in file system
+			String nomeArquivoSaida = Propriedades
+					.lerPropriedade(Valores.nomeArquivoSaida.name());
 			FileOutputStream out = new FileOutputStream(new File(
-					"professores.xlsx"));
+					nomeArquivoSaida + ".xlsx"));
 			workbook.write(out);
 			out.close();
 			System.out.println("Arquivo excel construído com êxito");
