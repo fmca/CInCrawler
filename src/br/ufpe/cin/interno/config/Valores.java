@@ -7,5 +7,5 @@ package br.ufpe.cin.interno.config;
  * */
 public enum Valores {
 
-	email, nome, sala, fone, fax, areas, lattes, excel, saida, urlPaginaProfessores, maxNumPagina, minNumPagina, numCrawlers, parametroVisitarPagina, nomeArquivoSaida, pagina, area, json
+	email, nome, sala, fone, fax, areas, lattes, excel, saida, urlPaginaProfessores, maxNumPagina, minNumPagina, numCrawlers, parametroVisitarPagina, nomeArquivoSaida, pagina, area, json, professores, professor, url, contato, xml
 }
