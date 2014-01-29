@@ -1,4 +1,4 @@
-package br.ufpe.cin.saida;
+package br.ufpe.cin.interno.saida;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -11,9 +11,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import br.ufpe.cin.config.Propriedades;
-import br.ufpe.cin.config.Valores;
-import br.ufpe.cin.entidade.Professor;
+import br.ufpe.cin.interno.config.Propriedades;
+import br.ufpe.cin.interno.config.Valores;
+import br.ufpe.cin.interno.entidade.Professor;
 
 public class Excel implements ISaida {
 
@@ -108,4 +108,6 @@ public class Excel implements ISaida {
 			e.printStackTrace();
 		}
 	}
+
+
 }

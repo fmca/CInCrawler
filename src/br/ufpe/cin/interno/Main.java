@@ -1,9 +1,9 @@
-package br.ufpe.cin;
+package br.ufpe.cin.interno;
 
-import br.ufpe.cin.config.Propriedades;
-import br.ufpe.cin.config.Valores;
-import br.ufpe.cin.saida.ISaida;
-import br.ufpe.cin.saida.SaidaFactory;
+import br.ufpe.cin.interno.config.Propriedades;
+import br.ufpe.cin.interno.config.Valores;
+import br.ufpe.cin.interno.saida.ISaida;
+import br.ufpe.cin.interno.saida.SaidaFactory;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;

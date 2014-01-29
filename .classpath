@@ -25,5 +25,6 @@
 	<classpathentry kind="lib" path="lib/tika-core-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/tika-parsers-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/org.json-20120521.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,10 +1,10 @@
-package br.ufpe.cin;
+package br.ufpe.cin.interno;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
 
-import br.ufpe.cin.config.Propriedades;
-import br.ufpe.cin.config.Valores;
+import br.ufpe.cin.interno.config.Propriedades;
+import br.ufpe.cin.interno.config.Valores;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;

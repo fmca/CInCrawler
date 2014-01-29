@@ -1,4 +1,4 @@
-package br.ufpe.cin;
+package br.ufpe.cin.interno;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Entities.EscapeMode;
 import org.jsoup.select.Elements;
 
-import br.ufpe.cin.entidade.Professor;
+import br.ufpe.cin.interno.entidade.Professor;
 
 public class DescritorProfessores {
 
@@ -71,14 +71,18 @@ public class DescritorProfessores {
 
 			for (int j = 0; j < strings.length; j++) {
 
-				strings[j] = strings[j].trim().replace("<div>", "")
-						.replace("</div>", "")
-						.replace("<font color=\"#000000\">", "").trim()
-						.replace("</font>", "")
-						.replace("Áreas de Interesse", "").replace("<em>", "")
-						.replace("Áreas de Interesse", "").replace("</em>", "")
-						.trim().replace("\n", " ");
+				strings[j] = Jsoup.parse(strings[j]).text()
+						.replace("Áreas de Interesse:", "")
+						.replace("Áreas de Interesse", "");
 
+				/*
+				 * strings[j] = strings[j].trim().replace("<div>", "")
+				 * .replace("</div>", "") .replace("<font color=\"#000000\">",
+				 * "").trim() .replace("</font>", "")
+				 * .replace("Áreas de Interesse", "").replace("<em>", "")
+				 * .replace("</em>", "").trim().replace("\n",
+				 * " ").replace("<b>", "");
+				 */
 				if (strings[j].contains("Fone:")) {
 					fone = strings[j].substring(6);
 				} else if (strings[j].contains("Fax:")) {
@@ -86,9 +90,18 @@ public class DescritorProfessores {
 				} else if (strings[j].contains("Sala:")) {
 					sala = strings[j].substring(6);
 				} else {
-
-					if (!strings[j].contains("<")
-							&& !strings[j].trim().equals(":")) {
+					
+					if (strings[j].contains("<")
+							|| strings[j].contains("Página")
+							|| strings[j].contains("Email")
+							|| strings[j].contains("E-mail")
+							|| strings[j].contains("Currículo")
+							|| strings[j].contains("Lattes")
+							|| strings[j].contains("Graduação")
+							|| strings[j].contains("Professores")) {
+						
+						//NADA
+					} else {
 						if (!strings[j].isEmpty()) {
 							if (!areas.isEmpty()) {
 								areas += ", ";

@@ -1,8 +1,8 @@
-package br.ufpe.cin.saida;
+package br.ufpe.cin.interno.saida;
 
 import java.util.List;
 
-import br.ufpe.cin.entidade.Professor;
+import br.ufpe.cin.interno.entidade.Professor;
 
 
 public interface ISaida {

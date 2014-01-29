@@ -1,4 +1,4 @@
-package br.ufpe.cin.config;
+package br.ufpe.cin.interno.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
