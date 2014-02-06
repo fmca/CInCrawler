@@ -22,22 +22,22 @@ public class Json implements ISaida {
 			JSONObject profJson = new JSONObject();
 
 			try {
-				profJson.append(Valores.nome.name(), p.getNome());
-				profJson.append(Valores.email.name(), p.getEmail());
-				profJson.append(Valores.lattes.name(), p.getLattes());
-				profJson.append(Valores.sala.name(), p.getSala());
-				profJson.append(Valores.pagina.name(), p.getPagina());
-				profJson.append(Valores.fone.name(), p.getFone());
-				profJson.append(Valores.fax.name(), p.getFax());
+				profJson.put(Valores.nome.name(), p.getNome());
+				profJson.put(Valores.email.name(), p.getEmail());
+				profJson.put(Valores.lattes.name(), p.getLattes());
+				profJson.put(Valores.sala.name(), p.getSala());
+				profJson.put(Valores.pagina.name(), p.getPagina());
+				profJson.put(Valores.fone.name(), p.getFone());
+				profJson.put(Valores.fax.name(), p.getFax());
 
 				JSONArray areasJson = new JSONArray();
 				for (String area : p.getAreasInteresse()) {
 					JSONObject areaJson = new JSONObject();
-					areaJson.append(Valores.area.name(), area);
+					areaJson.put(Valores.area.name(), area);
 					areasJson.put(areaJson);
 				}
 
-				profJson.append(Valores.areas.name(), areasJson);
+				profJson.put(Valores.areas.name(), areasJson);
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -53,12 +53,15 @@ public class Json implements ISaida {
 			String nomeArquivo = Propriedades
 					.lerPropriedade(Valores.nomeArquivoSaida.name());
 			FileWriter file = new FileWriter(nomeArquivo + ".json");
-			file.write(json.toString());
+			json.write(file);
 			file.flush();
 			file.close();
 			System.out.println("Arquivo JSON escrito com êxito!");
 
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
